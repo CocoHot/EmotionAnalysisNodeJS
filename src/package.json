@@ -1,0 +1,11 @@
+{
+    "name": "rts.node",
+    "private": true,
+    "version": "0.0.1",
+    "description": "rts.node demo application",
+    "author": "kballou <kballou@devnulllabs.io>",
+    "dependencies": {
+        "express": "3.x",
+        "socket.io": "1.x"
+    }
+}

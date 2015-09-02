@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <title>rts.node demo</title>
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box;}
+            h1 { color: #d33682; }
+            body { font: 13px Helvetica, Arial; }
+            #messages { list-style-type: none; margin: 0; padding: 0; }
+            #messages li { padding: 5px 10px; }
+            #messages li:nth-child(even) { color: #6c71c4; }
+            #messages li:nth-child(odd) { color: #268bd2; }
+        </style>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+    <body>
+        <h1>Real Time Streaming</h1>     
+            <div class="text well">
+                <table class = "table table-bordered table-striped" id ="messages">
+                    <thead>
+                        <tr>
+                            <th>State</th>
+                            <th class="success">Positive</th>
+                            <th class="danger">Negative</th>
+                            <th>City</th>
+                            <th class="success">Positive</th>
+                            <th class="danger">Negative</th>
+                            <th>City</th>
+                            <th class="success">Positive</th>
+                            <th class="danger">Negative</th>
+                            <th>City</th>
+                            <th class="success">Positive</th>
+                            <th class="danger">Negative</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        
+        
+        
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script>
+            var socket = io();
+            socket.on('post data', function (data) {
+                var json = JSON.parse(data);
+                var string = "<tr><td> California </td>"+ "<td class='success'>" + json.California[0] + "</td>" + "<td class='danger'>" + json.California[1] + "</td>";
+                string += "<td> San Francisco </td>"+ "<td class='success'>" + json["San Francisco"][0] + "</td>" + "<td class='danger'>" + json["San Francisco"][1] + "</td>";
+                string += "<td> Los Angeles </td>"+ "<td class='success'>" + json["Los Angles"][0] + "</td>" + "<td class='danger'>" + json["Los Angles"][1] + "</td>";
+                string += "<td> San Diego </td>"+ "<td class='success'>" + json["San Diego"][0] + "</td>" + "<td class='danger'>" + json["San Diego"][1] + "</td></tr>";
+                $('#messages').append(string);      
+            });
+        </script>
+    </body>
+</html>
